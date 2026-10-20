@@ -25,16 +25,6 @@ class _ImageUploadScreenState extends State<ImageUploadScreen> {
     }
   }
 
-  // TODO: Remove once OCR workflow is complete
-  void _uploadImage() {
-    if (_image == null) return;
-
-    //TODO: Add your upload logic here (e.g., Firebase, API call)
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Image Ready for upload: ${_image!.path}')),
-    );
-  }
-
   Future<void> _scanAndUploadImage() async {
     if (_image == null) return;
 
