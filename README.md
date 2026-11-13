@@ -1,123 +1,247 @@
-Groceries to Kart 🛒  
+# Groceries to Kart
 
-  A Flutter app for turning grocery lists into a smart, organized shopping experience.
+A full-stack grocery planning application built with Flutter Node.js, and MongoDB.
 
-Overview
-Groceries to Kart is a Flutter/Dart mobile app that helps users:
+---
 
-- Create and manage grocery lists
-- Organize items by store, aisle, or category
-- Reduce impulse buys and wasted trips
-- Eventually connect to a backend for sync, analytics, and multi-device use
+## Overview
 
-This project is also a portfolio-quality codebase to practice real-world mobile dev workflows (clean architecture, API integration, git, and documentation).
+Groceries to Kart is a personal software engineering project that explores how mobile applications, backend services, databases, and image processing can work together to improve the grocery shopping experience.
 
-Tech Stack
+Rather than simply creating a digital grocery list, the long-term goal is to build a system capable of organizing shopping information from multiple sources—including user input and grocery-related images—and presenting it in a way that makes shopping more efficient.
 
-- Frontend
-  - Flutter (Dart)
-  - Custom `AppTheme` for consistent colors, fonts, and spacing
-  - Reusable widgets (e.g. `StyledCard`, custom buttons, form fields)
+This repository documents both the application and my growth as a software engineer while building it.
 
-- Backend (planned / in progress)
-  - Node.js + Express
-  - MongoDB + Mongoose
-  - REST API for lists, items, and user data
+---
 
-Features
+## Why I Built This
 
-Implemented / In Progress
-- Create, edit, and delete grocery items
-- Group items by list (e.g. “HEB”, “Costco”, “Meal Prep”)
-- Basic form validation on item input
-- Reusable UI components with custom theming
+Most grocery applications focus on creating lists.
 
-Planned
+I wanted to explore a more interesting engineering problem:
 
-- Authentication (user accounts)
-- Cloud sync with MongoDB backend
-- Smart suggestions (frequently bought items)
-- Offline mode + local caching
-- Simple analytics (e.g. most common items)
+> How can software understand grocery information well enough to organize it into a smarter shopping experience?
 
+Answering that question requires much more than building screens.
 
-Getting Started
+It involves designing APIs, modeling data, validating user input, storing information, and eventually connecting image-processing workflows to a mobile application.
 
-Prerequisites
+---
 
-- [Flutter SDK](https://docs.flutter.dev/get-started/install)
-- Dart (included with Flutter)
-- A code editor (VS Code, Android Studio, or IntelliJ)
-- (Optional) Node.js and MongoDB if working on the backend
+## Current Features
 
-Verify your setup:
+- User profile creation
+- Form validation
+- Password confirmation
+- Home screen navigation
+- Early file selection support
+
+- ---
+
+## Planned features
+
+- Grocery list management
+- Receipt and grocery image uploads
+- OCR (Optical Character Recognition"
+- Node.js REST API
+- MongoDB persistence
+- Store layout modeling
+- Intelligent grocery organization
+- Item normalization and mapping
+- Image-assisted grocery planning.
+
+---
+
+## Technology Stack
+
+### Mobile 
+
+- Flutter
+- Dart
+- Material Design
+
+### Backend (In Progress)
+
+- Node.js
+- Express
+- MongoDB
+
+---
+
+## What I'm Learning
+
+This project is helping me develop practical software engineering skills beyond writing code.
+
+Current areas of focus include:
+
+- Mobile application architecture
+- REST API design
+- Backend development
+- Database modeling
+- Separation of concerns
+- Error handling
+- Form validation
+- Request/ response flows
+- Git workflows
+- Testing
+- Incremental software design
+
+---
+
+## Project Status
+
+ **Active Development**
+
+ Groceries to Kart is currently and education portfolio project. Features are added incrementally as I continue learning software engineering principles and applying them to a real application.
+
+ ---
+
+ ## Getting Started
+
+ ### Clone the Repository
+
+ ```bash
+git clone https://github.com/Michonn3/groceries-to-kart.git
+
+## Install Dependencies
 
 ```bash
-flutter doctor
+flutter pub get
+```
 
-Common commands
+## Run the Application
 
-- flutter clean # Clean build files
-- flutter pub get # Install dependencies
-- flutter pub outdated # Check for outdated packages
+```bash
+flutter run
+```
 
-Project Structure 
+---
 
-- app_theme.dart - Centralized colors, typography, spacing
-- widgets/ - Reusable UI componenets (cards, buttons, form fields)
-- screens/ - Pages/routes the user navigates through
-- models/ - Data structures used across app and backend
-- services/ - Handles API calls and data fetching
+## Future Roadmap
 
-Backend (Planned/ Optional)
+- [] Complete grocery workflow
+- [] Integrate backend API
+- [] Store grocery data in MongoDB
+- [] Add OCR pipeline
+- [] Organize grocery lists by store layout
+- [] Improve testing
+- [] Deploy backend
 
-The app is designed to talk to a Node.js/Express API with MongoDB.
+---
 
-Example API endpoints:
+## Author
 
-- GET /lists - Get all grocery lists
-- POST /lists - Create a new list
-- GET /lists/:id/items - Get items in a list
-- POST /lists/:id/items - Add an item to a list
+**Michelle Navarro**
 
-Development Workflow
-Recommended git workflow:
+Computer Science graduate, software engineering educator, and aspiring backend software engineer.
 
-1. git checkout main
-2. git pull origin main # ensures main is up to date with Github
-3. git checkout -b <type/short-branch-name>
-# Branching naming pattern:
-  # feat/... for new features
-  # fix/... for bug fixes
-  # refactor/... for cleanup/structure changes
-  # chore/... for maintenance
-  # docs/... for documentation changes
-4. Code, run app, run tests
-5. git status/ git diff 
-6. git add . 
-7. git commit -m "type: clear, short message"
-8. git push -u origin <branch name>
-9. Open PR -> review -> merge
-10. git checkout main && git pull
-11. Delete local and remote branch
-git branch -d feature/my-new-feature
+This project represents my journey from building applications to understanding how software systems are designed.
+
+## Screenshots
+
+### Profile Create
+
+![Profile Creation](docs/screenshots/profile-creation.png)
+
+___ 
+
+### Home Screen
+
+![Home Screen](docs/screenshots/home-screen.png)
+
+---
+
+## Grocery Upload *(Coming Soon)*
+
+Screenshot coming soon
+
+## System Architecture
+
+```text
+                        +---------------------------+
+                        |       Flutter App         |
+                        +-------------+-------------+
+                                      |
+                                      | HTTP Requests
+                                      |
+                        +-------------v-------------+
+                        |     Express REST API      |
+                        +---------------------------+
+                                      |
+                  +-------------------+------------------+
+                  |                                      |
+      +-----------v----------+               +-----------v----------+
+      |      MongoDB         |               |      OCR Service     |
+      |    Grocery Data      |               |    Image Analysis    |
+      +----------------------+               +----------------------+
+```
+## Request Flow
+
+### Grocery Scan Request Flow
+
+```text
+User selects grocery image
+            |
+            ▼
+Flutter uploads image
+            |
+            ▼
+Express API receivese request
+            |
+            ▼
+OCR extracts grocery items
+            |
+            ▼
+Items are normalized
+            |
+            ▼
+MongoDB stores grocery scan
+            |
+            ▼
+Flutter receives organized list
+            |
+            ▼
+User review grocery list
+```
+## Project Timeline
+
+|   Date   | Milestone |
+|----------|-----------|
+|June 2026 | Started Flutter application              |
+|June 2026 | Added profile creation and validation    |
+|June 2026 | Built home screen navigation             |
+|July 2026 | Began backend architecture with Node.js and MongoDB|
+|July 2026 | Started grocery image upload workflow    |
+|Future    | OCR integration                          |
+|Future    | Store-aware grocery organization         |
+|Future    | Production deployment                    |
+
+## Project Structure
+
+```text
+groceries-to-kart/
+|
+|── lib/
+|   |── main.dart
+|   |── screens/
+|   |── widgets/
+|   |── services/
+|   |── models/
+|
+|── backend/
+|   |── routes/
+|   |── models/
+|   |── controllers/
+|   |── server.js
+|
+|── docs/
+|   |── screenshots/
+|   |── diagrams/
+|
+|──  test/
+|
+|── READ.md
+```
 
 
-Commit Message Style
-Use conventional commits when possible:
 
-- feat: new feature
-- fix: bug fix
-- refactor: code cleanup
-- docs: documentation only
-- style: formatting, no logic changes
-
-Testing
-If you add tests later, document them here
-
-- flutter test
-
-Planned tests:
-- Unit tests for models (grocery_item, grocery_list)
-- Widget tests for major screens
-- Integration tests for add/ edit/ delete flows
